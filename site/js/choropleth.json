@@ -1,0 +1,93 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 500,
+    "title": "Median Airbnb nightly costs across Melbourne LGAs",
+    "projection": {
+        "type": "mercator"
+    },
+    "params": [{
+            "name": "highlight",
+            "select": {
+                "type": "point",
+                "on": "mouseover"
+            }
+        },
+        {
+            "name": "select",
+            "select": "point"
+        }
+    ],
+    "layer": [{
+        "data": {
+            "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json?token=AFTGRD5COY3EFTLPY5UWI7LBJVSSI",
+            "format": {
+                "type": "topojson",
+                "feature": "vic_lga"
+            }
+        },
+        "transform": [{
+            "lookup": "properties.ABB_NAME",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/listings_agg.csv?token=AFTGRD5DLT2JAH4JY3ANLTTBKR6C4",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "key": "city",
+                "fields": ["med_price"]
+            }
+        }],
+        "mark": {
+            "type": "geoshape",
+            "stroke": "white"
+        },
+        "encoding": {
+            "color": {
+                "field": "med_price",
+                "type": "quantitative",
+                "title": "Median price",
+                "legend": {
+                    "labelExpr": "join(['$', datum.value, if(datum.value >= 250, '+', '')], '')"
+                },
+                "scale": {
+                    "scheme": "browns"
+                }
+            },
+            "fillOpacity": {
+                "condition": {
+                    "param": "select",
+                    "value": 1
+                },
+                "value": 0.3
+            },
+            "tooltip": [{
+                    "field": "properties.ABB_NAME",
+                    "type": "nominal",
+                    "title": "LGA"
+                },
+                {
+                    "field": "med_price",
+                    "type": "quantitative",
+                    "title": "Median Airbnb Price",
+                    "format": "$"
+                }
+            ],
+            "strokeWidth": {
+                "condition": [{
+                        "param": "select",
+                        "empty": false,
+                        "value": 2
+                    },
+                    {
+                        "param": "highlight",
+                        "empty": false,
+                        "value": 1
+                    }
+                ],
+                "value": 0.4
+            }
+        }
+    }]
+}

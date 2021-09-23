@@ -20,7 +20,7 @@
     ],
     "layer": [{
         "data": {
-            "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json?token=AFTGRD5COY3EFTLPY5UWI7LBJVSSI",
+            "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json",
             "format": {
                 "type": "topojson",
                 "feature": "vic_lga"

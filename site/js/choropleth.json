@@ -18,14 +18,14 @@
             "select": "point"
         }
     ],
+    "data": {
+        "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json",
+        "format": {
+            "type": "topojson",
+            "feature": "vic_lga"
+        }
+    },
     "layer": [{
-        "data": {
-            "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json",
-            "format": {
-                "type": "topojson",
-                "feature": "vic_lga"
-            }
-        },
         "transform": [{
             "lookup": "properties.ABB_NAME",
             "from": {

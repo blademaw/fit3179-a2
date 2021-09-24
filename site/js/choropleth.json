@@ -4,7 +4,7 @@
     "height": 500,
     "title": "Median Airbnb nightly costs across Melbourne LGAs",
     "projection": {
-        "type": "mercator"
+        "type": "equirectangular"
     },
     "params": [{
             "name": "highlight",
@@ -19,7 +19,7 @@
         }
     ],
     "data": {
-        "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json",
+        "url": "../data/vic_lga.json",
         "format": {
             "type": "topojson",
             "feature": "vic_lga"
@@ -30,7 +30,7 @@
             "lookup": "properties.ABB_NAME",
             "from": {
                 "data": {
-                    "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/listings_agg.csv?token=AFTGRD5DLT2JAH4JY3ANLTTBKR6C4",
+                    "url": "../data/listings_agg.csv",
                     "format": {
                         "type": "csv"
                     }

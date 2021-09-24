@@ -1,94 +1,216 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 800,
-    "height": 500,
     "title": "Median Airbnb nightly costs across Melbourne LGAs",
     "projection": {
-        "type": "mercator"
+        "type": "equirectangular"
     },
-    "params": [{
-            "name": "highlight",
-            "select": {
-                "type": "point",
-                "on": "mouseover"
-            }
-        },
-        {
-            "name": "select",
-            "select": "point"
-        }
-    ],
-    "data": {
-        "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/vic_lga.json",
-        "format": {
-            "type": "topojson",
-            "feature": "vic_lga"
-        }
-    },
-    "layer": [{
-            "transform": [{
-                "lookup": "properties.ABB_NAME",
-                "from": {
+    "vconcat": [{
+        "width": 600,
+        "height": 300,
+            "layer": [{
+                    "params": [{
+                            "name": "highlight",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover"
+                            }
+                        },
+                        {
+                            "name": "select",
+                            "select": {
+                                "type": "point",
+                                "fields": ["properties.ABB_NAME"]
+                            }
+                        }
+                    ],
                     "data": {
-                        "url": "https://raw.githubusercontent.com/blademaw/fit3179-a2/main/listings_agg.csv?token=AFTGRD5DLT2JAH4JY3ANLTTBKR6C4",
+                        "url": "../data/vic_lga.json",
+                        "format": {
+                            "type": "topojson",
+                            "feature": "vic_lga"
+                        }
+                    },
+                    "transform": [{
+                            "lookup": "properties.ABB_NAME",
+                            "from": {
+                                "data": {
+                                    "url": "../data/listings_agg.csv",
+                                    "format": {
+                                        "type": "csv"
+                                    }
+                                },
+                                "key": "city",
+                                "fields": ["num_listings", "population", "med_price"]
+                            }
+                        },
+                        {
+                            "calculate": "datum.num_listings*100/datum.population",
+                            "as": "norm_listings"
+                        }
+                    ],
+                    "mark": {
+                        "type": "geoshape",
+                        "stroke": "#8f8e8e"
+                    },
+                    "encoding": {
+                        "color": {
+                            "field": "norm_listings",
+                            "type": "quantitative",
+                            "title": "Number of listings per 100 people",
+                            "scale": {
+                                "scheme": "browns",
+                                "type": "log"
+                            },
+                            "legend": {
+                                "offset": 18,
+                                "format": "f"
+                            }
+                        },
+                        "fillOpacity": {
+                            "condition": {
+                                "param": "select",
+                                "value": 1
+                            },
+                            "value": 0.3
+                        },
+                        "stroke": {
+                            "condition": {
+                                "param": "select",
+                                "value": "#525252"
+                            },
+                            "value": "#8f8e8e"
+                        },
+                        "tooltip": [{
+                                "field": "properties.ABB_NAME",
+                                "type": "nominal",
+                                "title": "LGA"
+                            },
+                            {
+                                "field": "norm_listings",
+                                "type": "quantitative",
+                                "title": "Number of listings per 100 people",
+                                "format": ".01"
+                            },
+                            {
+                                "field": "med_price",
+                                "type": "quantitative",
+                                "title": "Median nightly rent",
+                                "format": "$d"
+                            }
+                        ],
+                        "strokeWidth": {
+                            "condition": [{
+                                    "param": "select",
+                                    "empty": false,
+                                    "value": 2
+                                },
+                                {
+                                    "param": "highlight",
+                                    "empty": false,
+                                    "value": 1
+                                }
+                            ],
+                            "value": 0.4
+                        }
+                    }
+                },
+                {
+                    "data": {
+                        "url": "../data/listings_agg.csv",
                         "format": {
                             "type": "csv"
                         }
                     },
-                    "key": "city",
-                    "fields": ["med_price"]
+                    "mark": {
+                        "type": "circle",
+                        "color": "#ad73ff",
+                        "opacity": 0.7
+                    },
+                    "encoding": {
+                        "longitude": {
+                            "field": "mean_long",
+                            "type": "quantitative"
+                        },
+                        "latitude": {
+                            "field": "mean_lat",
+                            "type": "quantitative"
+                        },
+                        "size": {
+                            "field": "med_price",
+                            "type": "quantitative",
+                            "legend" : {
+                                "format": "$f"
+                            }
+                        }
+                    }
                 }
-            }],
+            ]
+        },
+        {
+            "width": 600,
+            "height": 100,
+            "data": {
+                "url": "../data/vic_lga.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "vic_lga"
+                }
+            },
+            "transform": [
+                {
+                    "lookup": "properties.ABB_NAME",
+                    "from": {
+                        "data": {
+                            "url": "../data/listings_agg.csv",
+                            "format": {
+                                "type": "csv"
+                            }
+                        },
+                        "key": "city",
+                        "fields": ["num_listings", "population", "med_price"]
+                    }
+                }
+            ],
+            "layer": [{
             "mark": {
-                "type": "geoshape",
-                "stroke": "white"
+                "type": "point",
+                "color": {"value": "grey"}
             },
             "encoding": {
-                "color": {
-                    "field": "med_price",
-                    "type": "quantitative",
-                    "title": "Median price",
-                    "legend": {
-                        "labelExpr": "join(['$', datum.value, if(datum.value >= 250, '+', '')], '')"
-                    },
-                    "scale": {
-                        "scheme": "browns"
-                    }
+                "x": {
+                    "field": "num_listings", "type": "quantitative"
                 },
-                "fillOpacity": {
-                    "condition": {
-                        "param": "select",
-                        "value": 1
-                    },
-                    "value": 0.3
-                },
-                "tooltip": [{
-                        "field": "properties.ABB_NAME",
-                        "type": "nominal",
-                        "title": "LGA"
-                    },
-                    {
-                        "field": "med_price",
-                        "type": "quantitative",
-                        "title": "Median Airbnb Price",
-                        "format": "$"
-                    }
+                "y": {
+                    "field": "population", "type": "quantitative"
+                }
+            }},
+            {
+                "transform": [
+                    {"filter": {"selection": "select"}}
                 ],
-                "strokeWidth": {
-                    "condition": [{
-                            "param": "select",
-                            "empty": false,
-                            "value": 2
-                        },
+                "mark": {
+                    "type": "point",
+                    "color": "blue"
+                },
+                "encoding": {
+                    "x": {
+                        "field": "num_listings", "type": "quantitative", "scale": {"type": "linear"},
+                        "title": "Total number of Listings"
+                    },
+                    "y": {
+                        "field": "population", "type": "quantitative",
+                        "title": "Population (2018)"
+                    },
+                    "tooltip": [
                         {
-                            "param": "highlight",
-                            "empty": false,
-                            "value": 1
+                            "field": "properties.ABB_NAME",
+                            "title": "LGA",
+                            "type": "nominal"
                         }
-                    ],
-                    "value": 0.4
+                    ]
                 }
             }
+            ]
         }
     ]
 }

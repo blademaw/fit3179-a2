@@ -1,0 +1,204 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Number of open Airbnb listings in LGAs, normalised",
+    "vconcat": [{
+        "width": 750,
+        "height": 500,
+        "projection": {
+            "type": "equirectangular"
+        },
+        "layer": [{
+            "params": [{
+                "name": "highlight",
+                "select": {
+                    "type": "point",
+                    "on": "mouseover"
+                }
+            },
+            {
+                "name": "select",
+                "select": {
+                    "type": "point",
+                    "fields": ["properties.ABB_NAME"]
+                }
+            },
+            {
+                "name": "normalize",
+                "select": {"type": "point", "fields": ["key"]},
+                "value": [{"key": "norm_listings_area"}],
+                "bind": {
+                    "input": "select",
+                    "options": [
+                        "norm_listings_area",
+                        "norm_listings_pop"
+                    ],
+                    "labels": [
+                        "by area (per km²)",
+                        "by population (per 100 people)"
+                    ],
+                    "name": "Normalise by: "
+                }
+            }
+        ],
+            "data": {
+                "url": "../../data/vic_lga.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "vic_lga"
+                }
+            },
+            "transform": [{
+                "lookup": "properties.ABB_NAME",
+                "from": {
+                    "data": {
+                        "url": "../../data/listings_agg.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "key": "city",
+                    "fields": ["norm_listings_area", "norm_listings_pop", "mean_lat", "mean_long"]
+                }
+            },
+            {
+                "fold": ["norm_listings_area", "norm_listings_pop"]
+            },
+            {
+                "filter": {"param": "normalize"}
+            }],
+            "mark": {
+                "type": "geoshape",
+                "stroke": "white"
+            },
+            "encoding": {
+                "color": {
+                    "field": "value",
+                    "type": "quantitative",
+                    "title": "Number of listings",
+                    "scale": {
+                        "type": "log",
+                        "scheme": "browns"
+                    },
+                    "legend": {
+                        "offset": -35,
+                        "orient": "left"
+                    }
+                },
+                "tooltip": [{
+                    "field": "properties.ABB_NAME",
+                    "type": "nominal",
+                    "title": "LGA"
+                },
+                {
+                    "field": "value",
+                    "type": "quantitative",
+                    "title": "Listings",
+                    "format": ".2f"
+                }
+                ],
+                "fillOpacity": {
+                    "condition": {
+                        "param": "select",
+                        "value": 1
+                    },
+                    "value": 0.3
+                },
+                "strokeWidth": {
+                    "condition": [{
+                            "param": "select",
+                            "empty": false,
+                            "value": 2
+                        },
+                        {
+                            "param": "highlight",
+                            "empty": false,
+                            "value": 1
+                        }
+                    ],
+                    "value": 0.4
+                }
+            }
+        },
+        {
+            "data": {
+                "url": "../../data/listings_agg.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "mark": {"type": "text", "baseline": "middle"},
+            "encoding": {
+            "text": {"field": "city", "type": "nominal"},
+            "longitude": {"field": "mean_long", "type": "quantitative"},
+            "latitude": {"field": "mean_lat", "type": "quantitative"},
+            "color": {"value": "black"},
+            "size": {"value": 10},
+            "opacity": {
+                "condition": {
+                "test": "datum['city'] != 'Melbourne' && datum['city'] != 'Greater Dandenong' && datum['city'] != 'Darebin' && datum['city'] != 'Moreland' && datum['city'] != 'Moonee Valley' && datum['city'] != 'Boroondara' && datum['city'] != 'Yarra' && datum['city'] != 'Maribyrnong' && datum['city'] != 'Port Phillip' && datum['city'] != 'Stonnington' && datum['city'] != 'Glen Eira' && datum['city'] != 'Bayside'",
+                "value": 1
+                },
+                "value": 0
+            }
+        }
+        }]
+    },
+    {
+        "width": 750,
+        "height": 225,
+        "data": {
+            "url": "../../data/vic_lga.json",
+            "format": {
+                "type": "topojson",
+                "feature": "vic_lga"
+            }
+        },
+        "transform": [{
+            "lookup": "properties.ABB_NAME",
+            "from": {
+                "data": {
+                    "url": "../../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "key": "city",
+                "fields": ["city", "norm_listings_area", "norm_listings_pop"]
+            }
+        },
+        {
+            "fold": ["norm_listings_area", "norm_listings_pop"]
+        },
+        {
+            "filterInvalid": true
+        },
+        {
+            "filter": {"param": "normalize"}
+        }],
+        "mark": {
+            "type": "bar",
+            "color": "brown",
+            "opacity": 1
+        },
+        "encoding": {
+            "x": {
+                "field": "city",
+                "type": "nominal",
+                "title": "LGA",
+                "sort": {"order": "descending", "field": "value", "type": "quantitative"}
+            },
+            "y": {
+                "field": "value",
+                "type": "quantitative",
+                "title": "Number of listings"
+            },
+            "fillOpacity": {
+                "condition": [{
+                    "param": "select",
+                    "value": 1
+                }],
+                "value": 0.4
+            }
+        }
+    }]
+}

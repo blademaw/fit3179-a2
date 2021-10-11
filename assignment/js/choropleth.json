@@ -1,6 +1,12 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "Median Airbnb nightly costs across Melbourne LGAs",
+    "background": "#ebd4be",
+    "config": {
+        "axis": {
+            "gridColor": "#dbb38b"
+        }
+    },
     "vconcat": [{
             "autosize": {
                 "type": "fit",
@@ -54,20 +60,17 @@
                                     }
                                 },
                                 "key": "city",
-                                "fields": ["num_listings", "population", "med_price"]
+                                "fields": ["num_listings", "population", "med_price", "norm_listings_pop"]
                             }
-                        },
-                        {
-                            "calculate": "datum.num_listings*100/datum.population",
-                            "as": "norm_listings"
                         }
                     ],
                     "mark": {
-                        "type": "geoshape"
+                        "type": "geoshape",
+                        "stroke": "white"
                     },
                     "encoding": {
                         "color": {
-                            "field": "norm_listings",
+                            "field": "norm_listings_pop",
                             "type": "quantitative",
                             "title": "Number of listings per 100 people",
                             "scale": {
@@ -76,7 +79,7 @@
                                 "domain": [0.2, 1, 2]
                             },
                             "legend": {
-                                "offset": -125,
+                                "offset": -175,
                                 "orient": "left"
                             }
                         },
@@ -87,20 +90,13 @@
                             }],
                             "value": 0.4
                         },
-                        "stroke": {
-                            "condition": {
-                                "param": "select",
-                                "value": "#858585"
-                            },
-                            "value": "#D8D8D8"
-                        },
                         "tooltip": [{
                                 "field": "properties.ABB_NAME",
                                 "type": "nominal",
                                 "title": "LGA"
                             },
                             {
-                                "field": "norm_listings",
+                                "field": "norm_listings_pop",
                                 "type": "quantitative",
                                 "title": "Number of listings per 100 people",
                                 "format": ".01"
@@ -154,7 +150,7 @@
                             "field": "med_price",
                             "type": "quantitative",
                             "legend": {
-                                "offset": -125,
+                                "offset": -175,
                                 "orient": "left",
                                 "format": "$f"
                             }
@@ -162,6 +158,33 @@
                     }
                 }
             ]
+        },
+        {
+            "width": 750,
+            "height": 20,
+            "data": {
+                "url": "../data/listings_agg.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "layer": [{
+                "mark": {
+                    "type": "text",
+                    "dx": -50,
+                    "font": "Roboto",
+                    "fontSize": 13,
+                    "fontWeight": 400
+                },
+                "encoding": {
+                    "color": {
+                        "value": "black"
+                    },
+                    "text": {
+                        "value": {"signal": "'Try selecting LGAs from the above map to see how they compare below:'"}
+                    }
+                }
+            }]
         },
         {
             "hconcat": [{
@@ -188,11 +211,12 @@
                                     "fields": ["num_listings", "population", "med_price"]
                                 }
                             }],
-                            "layer": [{
+                            "layer": [
+                                {
                                     "mark": {
                                         "type": "point",
                                         "color": {
-                                            "value": "grey"
+                                            "value": "gray"
                                         },
                                         "opacity": 1,
                                         "size": 100
@@ -213,7 +237,7 @@
                                     {
                                         "name": "select",
                                         "select": {
-                                            "type": "interval",
+                                            "type": "point",
                                             "fields": ["properties.ABB_NAME"]
                                         }
                                     }
@@ -247,6 +271,16 @@
                                             "field": "properties.ABB_NAME",
                                             "title": "LGA",
                                             "type": "nominal"
+                                        },
+                                        {
+                                            "field": "num_listings",
+                                            "title": "Number of total listings",
+                                            "type": "quantitative"
+                                        },
+                                        {
+                                            "field": "population",
+                                            "title": "Population (2018)",
+                                            "type": "quantitative"
                                         }]
                                     }
                                 }
@@ -254,7 +288,10 @@
                         },
                         {
                             "width": 400,
-                            "height": 225,
+                            "height": 325,
+                            "config": {
+                                "background": "white"
+                            },
                             "data": {
                                 "url": "../data/listings_agg.csv",
                                 "format": {
@@ -267,16 +304,17 @@
                                 "opacity": 1
                             },
                             "encoding": {
-                                "x": {
+                                "y": {
                                     "field": "city",
                                     "type": "nominal",
                                     "title": "LGA",
                                     "sort": {"field": "med_price", "type": "quantitative"}
                                 },
-                                "y": {
+                                "x": {
                                     "field": "med_price",
                                     "type": "quantitative",
-                                    "title": "Median weekly price"
+                                    "title": "Median weekly price",
+                                    "axis": {"format": "$f"}
                                 },
                                 "fillOpacity": {
                                     "condition": [{
@@ -284,7 +322,18 @@
                                         "value": 1
                                     }],
                                     "value": 0.4
-                                }
+                                },
+                                "tooltip": [{
+                                    "field": "city",
+                                    "type": "nominal",
+                                    "title": "LGA"
+                                },
+                                {
+                                    "field": "med_price",
+                                    "title": "Median weekly price",
+                                    "type": "quantitative",
+                                    "format": "$.0f"
+                                }]
                             }
                         }
                     ]
@@ -326,13 +375,16 @@
                         "x": {
                             "field": "weekly_price",
                             "type": "quantitative",
-                            "title": "Weekly rent price ($)"
+                            "title": "Weekly rent price ($)",
+                            "axis": {
+                                "grid": false
+                            }
                         },
                         "y": {
                             "field": "city",
                             "type": "nominal",
                             "title": "LGA",
-                            "sort": {"field": "med_price", "aggregate": "median", "order": "ascending"}
+                            "sort": "y"
                         }
                     }
                 }

@@ -1,0 +1,394 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#E0C8B0",
+    "config": {
+        "style": {
+          "cell": {
+            "stroke": "transparent"
+          }
+        }
+    },
+    "params": [{
+        "name": "LGA_select",
+        "value": "Banyule",
+        "bind": {
+            "input": "select",
+            "options": [
+                "Banyule",
+                "Bayside",
+                "Boroondara",
+                "Brimbank",
+                "Cardinia",
+                "Casey",
+                "Darebin",
+                "Frankston",
+                "Glen Eira",
+                "Greater Dandenong",
+                "Hobsons Bay",
+                "Hume",
+                "Kingston",
+                "Knox",
+                "Manningham",
+                "Maribyrnong",
+                "Maroondah",
+                "Melbourne",
+                "Melton",
+                "Monash",
+                "Moonee Valley",
+                "Moreland",
+                "Nillumbik",
+                "Port Phillip",
+                "Stonnington",
+                "Whitehorse",
+                "Whittlesea",
+                "Wyndham",
+                "Yarra",
+                "Yarra Ranges"
+            ],
+            "name": "LGA: "
+        }
+    }],
+    "hconcat": [{
+        "width": 200,
+        "height": 200,
+        "projection": "equirectangular",
+        "layer": [{
+            "data": {
+                "url": "../data/vic_lga.json",
+                "format": {
+                    "type": "topojson",
+                    "feature": "vic_lga"
+                }
+            },
+            "transform": [
+            {
+                "lookup": "properties.ABB_NAME",
+                "from": {
+                    "data": {
+                        "url": "../data/revised_cleansed_listings.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "key": "city",
+                    "fields": ["city", "latitude", "longitude"]
+                }
+            },
+            {
+                "filter": "datum['city'] == LGA_select"
+            }],
+            "mark": {
+                "type": "geoshape",
+                "stroke": "black"
+            },
+            "encoding": {
+                "color": {
+                    "value": "grey"
+                },
+                "fillOpacity": {
+                    "value": 0.6
+                }
+            }
+        },
+        {
+            "data": {
+                "url": "../data/revised_cleansed_listings.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "transform": [
+                {
+                    "filter": "datum['city'] == LGA_select"
+                }
+            ],
+            "mark": {
+                "type": "circle",
+                "opacity": 0.8
+            },
+            "encoding": {
+                "longitude": {"field": "longitude"},
+                "latitude": {"field": "latitude"},
+                "color": {
+                    "field": "review_scores_rating",
+                    "type": "quantitative",
+                    "title": "Review Score (out of 100)",
+                    "scale": {
+                        "scheme": "browns",
+                        "type": "threshold",
+                        "domain": [70, 80, 90]
+                    },
+                    "legend": {
+                        "offset": -50,
+                        "orient": "left"
+                    }
+                },
+                "size": {"value": 25}
+            }
+        }]
+    },
+    {
+        "vconcat": [{
+            "width": 200,
+            "height": 25,
+            "data": {
+                "url": "../data/listings_agg.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "transform": [{
+                "filter": "datum['city'] == LGA_select"
+            }],
+            "layer": [{
+                "mark": {
+                    "type": "text",
+                    "fontStyle": "bold",
+                    "fontSize": 13
+                },
+                "encoding": {
+                    "color": {
+                        "value": "black"
+                    },
+                    "text": {
+                        "value": {"signal": "'The average Airbnb in ' + datum.city + ' houses:'"}
+                    }
+                }
+            }]
+        },
+        {
+            "hconcat": [{
+                "width": 25,
+                "height": 40,
+                "data": {
+                    "values": [
+                        {"x": 0.5, "y": 0.5, "img": "../data/male-solid.svg"}
+                    ]
+                },
+                "layer": [{
+                    "mark": {
+                        "type": "image",
+                        "aspect": true,
+                        "width": 35
+                    },
+                    "encoding": {
+                        "x": {"field": "x", "type": "quantitative", "axis": false},
+                        "y": {"field": "y", "type": "quantitative", "axis": false},
+                        "url": {"field": "img", "type": "nominal"}
+                    }
+                }]
+            },
+            {
+                "width": 10,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 25,
+                        "fontWeight": "bolder"
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"signal": "datum.mean_acc"}
+                        }
+                    }
+                }]
+            },
+            {
+                "width": 100,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 16
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"signal": "'people maximum'"}
+                        }
+                    }
+                }]
+            }]
+        },
+        {
+            "hconcat": [{
+                "width": 25,
+                "height": 40,
+                "data": {
+                    "values": [
+                        {"x": 0.5, "y": 0.5, "img": "../data/bed-solid.svg"}
+                    ]
+                },
+                "layer": [{
+                    "mark": {
+                        "type": "image",
+                        "aspect": true,
+                        "width": 35
+                    },
+                    "encoding": {
+                        "x": {"field": "x", "type": "quantitative", "axis": false},
+                        "y": {"field": "y", "type": "quantitative", "axis": false},
+                        "url": {"field": "img", "type": "nominal"}
+                    }
+                }]
+            },
+            {
+                "width": 10,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 25,
+                        "fontWeight": "bolder"
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"signal": "datum.mean_bed"}
+                        }
+                    }
+                }]
+            },
+            {
+                "width": 100,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 16
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"expr": "join(['bedroom', '', if(datum.mean_bed > 1, 's', '')], '')"}
+                        }
+                    }
+                }]
+            }]
+        },
+        {
+            "hconcat": [{
+                "width": 25,
+                "height": 40,
+                "data": {
+                    "values": [
+                        {"x": 0.5, "y": 0.5, "img": "../data/toilet-solid.svg"}
+                    ]
+                },
+                "layer": [{
+                    "mark": {
+                        "type": "image",
+                        "aspect": true,
+                        "width": 35
+                    },
+                    "encoding": {
+                        "x": {"field": "x", "type": "quantitative", "axis": false},
+                        "y": {"field": "y", "type": "quantitative", "axis": false},
+                        "url": {"field": "img", "type": "nominal"}
+                    }
+                }]
+            },
+            {
+                "width": 10,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 25,
+                        "fontWeight": "bolder"
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"signal": "datum.mean_bath"}
+                        }
+                    }
+                }]
+            },
+            {
+                "width": 100,
+                "height": 40,
+                "data": {
+                    "url": "../data/listings_agg.csv",
+                    "format": {
+                        "type": "csv"
+                    }
+                },
+                "transform": [{
+                    "filter": "datum['city'] == LGA_select"
+                }],
+                "layer": [{
+                    "mark": {
+                        "type": "text",
+                        "fontSize": 16
+                    },
+                    "encoding": {
+                        "color": {
+                            "value": "black"
+                        },
+                        "text": {
+                            "value": {"expr": "join(['bathroom', '', if(datum.mean_bath > 1, 's', '')], '')"}
+                        }
+                    }
+                }]
+            }]
+        }]
+    }]
+}

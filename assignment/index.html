@@ -52,12 +52,16 @@
         </div>
         
         <!-- subheading grid -->
-        <div class="pure-g padded ">
+        <div class="pure-g padded">
             <div class="pure-u-1-1 highlighted centtext">
                 <p> Every year, Melbournians rent their living spaces to guests through Airbnb, <br/>
                     and <strong>can earn an <a href="https://www.theage.com.au/national/victoria/airbnb-a-numbers-guide-for-melbournians-raking-in-the-dollars-20160114-gm5w9b.html">average of $11,600</a> annually</strong> for a single room. The following<br/>
                     visualisation looks at data <strong>compiled in 2018</strong> and analyzes open Airbnbs<br/>
                     across local government areas (LGAs) of Victoria.</p>
+            </div>
+
+            <div class="pure-u-1-1 darker centtext" style="margin-top: 20px; margin-bottom: -20px;">
+                <h2>Where are the Airbnbs, and how much are they?</h2>
             </div>
         </div>
         
@@ -68,35 +72,85 @@
             </div>
         </div>
 
-        <!-- viz row 2 grid -->
-        <div class="pure-g highlighted padded">
-
-            <div class="pure-u-1-3">
-                <div class="pure-u-1-1 centtext darker">
-                    <h3>What's in an Airbnb?</h3>
+        <!-- viz row 2 grid (interactive suburb dot plot with figures) -->
+        <!-- <div class="highlighted"> -->
+            <div class="pure-g highlighted padded">
+                <div class="pure-u-1-1 centtext darker" style="margin-bottom: 10px;">
+                    <h2>What makes up an average Airbnb in Victoria?</h2>
                 </div>
 
-                <div class="pure-u-1-1">
-                    <p>Write blurb here</p>
+                <div class="pure-u-1-3">
+                    <div class="pure-u-1-1 centtext darker">
+                        <h3>Floor plan</h3>
+                    </div>
+
+                    <div class="pure-u-1-1">
+                        <p>Blurb about Airbnbs having bath/bedrooms and accommodating people.</p>
+                    </div>
+                </div>
+
+                <div class="pure-u-2-3 l-box">
+                    <div id="vis2" class="vis-container"></div>
                 </div>
             </div>
 
-            <div class="pure-u-2-3 l-box">
-                <div id="vis2" class="vis-container"></div>
+            <!-- viz row 3 grid (word cloud) -->
+            <div class="pure-g centtext">
+                <div class="pure-u-1-1" style="text-align: left; padding-left: 50px;">
+                    <h3>Most common amenities in Airbnbs</h3>
+                </div>
+                <div class="pure-u-1-1 l-box">
+                    <div id="vis3" class="vis-container"></div>
+                </div>
             </div>
-        </div>
+
+            <!-- viz row 4 grid (property type and text) -->
+            <div class="pure-g highlighted padded">
+                <div class="pure-u-11-24 l-box">
+                    <div id="vis4" class="vis-container"></div>
+                    
+                    <div id="vis5" class="vis-container"></div>
+                </div>
+
+                <div class="pure-u-13-24">
+                    <div class="pure-u-1-1 centtext darker">
+                        <h3>Rental types & amenities</h3>
+                    </div>
+
+                    <div class="pure-u-1-1">
+                        <p>With over half of Airbnb rentals being apartments, .</p>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
     </div>
+    
 
     <!-- Javascript for embedding Vega-Lite charts -->
     <script>
         var CloroViz = "js/choropleth.json";
         var row2Viz = "js/row2.json";
+        var row3Viz = "js/word_cloud3.json";
+        var row4Viz = "js/row4.json"
+        var row5Viz = "js/row4bar.json"
 
         vegaEmbed('#vis1', CloroViz, {
             "actions": false
         }).then(function (result) {}).catch(console.error);
+        
+        vegaEmbed('#vis3', row3Viz, {
+            "actions": false
+        }).then(function (result) {}).catch(console.error);
 
         vegaEmbed('#vis2', row2Viz, {
+            "actions": false
+        }).then(function (result) {}).catch(console.error);
+        
+        vegaEmbed('#vis4', row4Viz, {
+            "actions": false
+        }).then(function (result) {}).catch(console.error);
+        
+        vegaEmbed('#vis5', row5Viz, {
             "actions": false
         }).then(function (result) {}).catch(console.error);
     </script>

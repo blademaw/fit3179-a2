@@ -1,0 +1,56 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#E0C8B0",
+    "config": {
+        "style": {
+        "cell": {
+            "stroke": "transparent"
+        }
+        }
+    },
+    "width": 250,
+    "height": 200,
+    "params": [{
+        "name": "pie-light",
+        "select": {
+            "type": "point",
+            "on": "mouseover"
+        }
+    }],
+    "data": {
+        "url": "../data/properties.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "encoding": {
+        "color": {"field": "property", "type": "nominal", "legend": {"orient": "left", "offset": -20}},
+        "theta": {"field": "count", "type": "quantitative"},
+        "order": {"field": "perc", "type": "quantitative", "sort": "descending"},
+        "strokeOpacity": {"value": 0.5},
+        "strokeWidth": {
+            "condition": [
+                {
+                    "param": "pie-light",
+                    "empty": false,
+                    "value": 2
+                }
+            ],
+            "value": 0.4
+        },
+        "tooltip": [{
+            "field": "property",
+            "type": "nominal",
+            "title": "Type of listing"
+            },
+            {
+            "field": "perc",
+            "type": "quantitative",
+            "title": "Share of listings",
+            "format": ".0%"
+        }]
+    },
+    "layer": [
+        {"mark": {"type": "arc", "stroke": "white", "innerRadius": 50}}
+    ]
+}

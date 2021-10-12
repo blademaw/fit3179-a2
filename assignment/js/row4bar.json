@@ -1,0 +1,115 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "background": "#E0C8B0",
+    "config": {
+        "style": {
+        "cell": {
+            "stroke": "transparent"
+        }
+        }
+    },
+    "width": 350,
+    "height": 200,
+    "data": {
+        "url": "../data/rooms.csv",
+        "format": {
+            "type": "csv"
+        }
+    },
+    "layer": [{
+        "params": [{
+            "name": "bar-light",
+            "select": {
+                "type": "point",
+                "on": "mouseover"
+            }
+        }],
+        "mark": {
+            "type": "bar",
+            "height": 100,
+            "stroke": "white"
+        },
+        "encoding": {
+            "x": {
+                "field": "count",
+                "type": "quantitative",
+                "axis": false
+            },
+            "color": {
+                "field": "room",
+                "type": "nominal",
+                "legend": false,
+                "scale": {"domain": ["Entire home/apt", "Private room", "Shared room"], "range": ["brown", "chocolate", "grey"]}
+            },
+            "tooltip": [{
+                "field": "perc",
+                "type": "quantitative",
+                "format": ".0%",
+                "title": "Share of listings"
+            }],
+            "strokeOpacity": {"value": 0.5},
+            "strokeWidth": {
+            "condition": [
+                {
+                    "param": "bar-light",
+                    "empty": false,
+                    "value": 2
+                }
+            ],
+            "value": 0.4
+            }
+        }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontStyle": "bold",
+            "color": "brown",
+            "baseline": "middle",
+            "dx": -100,
+            "dy": -63,
+            "strokeWidth": 0.20,
+            "stroke": "black",
+            "strokeOpacity": 1
+        },
+        "encoding": {
+            "text": {"value": "Entire home/apartment"}
+        }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontStyle": "bold",
+            "color": "chocolate",
+            "baseline": "middle",
+            "dx": 75,
+            "dy": -63,
+            "strokeWidth": 0.20,
+            "stroke": "black",
+            "strokeOpacity": 1
+        },
+        "encoding": {
+            "text": {"value": "Private room"}
+        }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontStyle": "bold",
+            "color": "grey",
+            "baseline": "middle",
+            "dx": 110,
+            "dy": 62,
+            "strokeWidth": 0.20,
+            "stroke": "black",
+            "strokeOpacity": 1
+        },
+        "encoding": {
+            "text": {"value": "Shared room"}
+        }
+    }]
+    
+}

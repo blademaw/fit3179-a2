@@ -1,0 +1,1001 @@
+{
+    "config": {
+        "view": {
+            "continuousWidth": 400,
+            "continuousHeight": 300,
+            "height": 300,
+            "strokeWidth": 0,
+            "width": 725
+        }
+    },
+    "data": {
+        "name": "data-6e13775bc0d8e6597dbf7a50bed47aab"
+    },
+    "mark": {
+        "type": "text",
+        "baseline": "middle"
+    },
+    "encoding": {
+        "color": {
+            "type": "quantitative",
+            "field": "count",
+            "scale": {
+                "scheme": "goldred"
+            }
+        },
+        "size": {
+            "type": "quantitative",
+            "field": "count",
+            "legend": null
+        },
+        "text": {
+            "type": "nominal",
+            "field": "amenity"
+        },
+        "x": {
+            "type": "quantitative",
+            "axis": null,
+            "field": "x"
+        },
+        "y": {
+            "type": "quantitative",
+            "axis": null,
+            "field": "y"
+        },
+        "tooltip": [{
+            "field": "amenity",
+            "type": "nominal",
+            "title": "Amenity"
+        },
+        {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Frequency"
+        }]
+    },
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json",
+    "background": "#ebd4be",
+    "datasets": {
+        "data-6e13775bc0d8e6597dbf7a50bed47aab": [{
+            "amenity": "Alfresco bathtub",
+            "count": 2,
+            "x": 175,
+            "y": 48
+        }, {
+            "amenity": "Stand alone steam shower",
+            "count": 2,
+            "x": 57,
+            "y": 127
+        }, {
+            "amenity": "Pool toys",
+            "count": 4,
+            "x": 77,
+            "y": 155
+        }, {
+            "amenity": "Washer / Dryer",
+            "count": 4,
+            "x": 130,
+            "y": 135
+        }, {
+            "amenity": "Tennis court",
+            "count": 4,
+            "x": 27,
+            "y": 164
+        }, {
+            "amenity": "Hammock",
+            "count": 4,
+            "x": 149,
+            "y": 126
+        }, {
+            "amenity": "Warming drawer",
+            "count": 4,
+            "x": 72,
+            "y": 145
+        }, {
+            "amenity": "HBO GO",
+            "count": 6,
+            "x": 10,
+            "y": 32
+        }, {
+            "amenity": "Pool with pool hoist",
+            "count": 6,
+            "x": 16,
+            "y": 36
+        }, {
+            "amenity": "Private pool",
+            "count": 6,
+            "x": 24,
+            "y": 73
+        }, {
+            "amenity": "Standing valet",
+            "count": 6,
+            "x": 98,
+            "y": 78
+        }, {
+            "amenity": "Brick oven",
+            "count": 8,
+            "x": 55,
+            "y": 54
+        }, {
+            "amenity": "Steam oven",
+            "count": 8,
+            "x": 186,
+            "y": 123
+        }, {
+            "amenity": "Pool cover",
+            "count": 8,
+            "x": 137,
+            "y": 26
+        }, {
+            "amenity": "Outdoor kitchen",
+            "count": 10,
+            "x": 25,
+            "y": 10
+        }, {
+            "amenity": "Fire pit",
+            "count": 10,
+            "x": 158,
+            "y": 79
+        }, {
+            "amenity": "Private hot tub",
+            "count": 10,
+            "x": 125,
+            "y": 31
+        }, {
+            "amenity": "High-resolution computer monitor",
+            "count": 10,
+            "x": 8,
+            "y": 114
+        }, {
+            "amenity": "Fax machine",
+            "count": 10,
+            "x": 30,
+            "y": 59
+        }, {
+            "amenity": "Amazon Echo",
+            "count": 12,
+            "x": 93,
+            "y": 65
+        }, {
+            "amenity": "Double oven",
+            "count": 12,
+            "x": 96,
+            "y": 161
+        }, {
+            "amenity": "Wine cooler",
+            "count": 14,
+            "x": 14,
+            "y": 168
+        }, {
+            "amenity": "Mountain view",
+            "count": 18,
+            "x": 165,
+            "y": 119
+        }, {
+            "amenity": "Heated floors",
+            "count": 18,
+            "x": 95,
+            "y": 158
+        }, {
+            "amenity": "Projector and screen",
+            "count": 18,
+            "x": 78,
+            "y": 99
+        }, {
+            "amenity": "Ski-in/Ski-out",
+            "count": 18,
+            "x": 161,
+            "y": 87
+        }, {
+            "amenity": "Murphy bed",
+            "count": 20,
+            "x": 177,
+            "y": 109
+        }, {
+            "amenity": "Jetted tub",
+            "count": 20,
+            "x": 124,
+            "y": 167
+        }, {
+            "amenity": "Mobile hoist",
+            "count": 20,
+            "x": 101,
+            "y": 102
+        }, {
+            "amenity": "Sauna",
+            "count": 22,
+            "x": 92,
+            "y": 179
+        }, {
+            "amenity": "Electric profiling bed",
+            "count": 22,
+            "x": 62,
+            "y": 132
+        }, {
+            "amenity": "Shared hot tub",
+            "count": 24,
+            "x": 103,
+            "y": 3
+        }, {
+            "amenity": "Private bathroom",
+            "count": 26,
+            "x": 86,
+            "y": 162
+        }, {
+            "amenity": "Printer",
+            "count": 26,
+            "x": 26,
+            "y": 15
+        }, {
+            "amenity": "Central air conditioning",
+            "count": 32,
+            "x": 154,
+            "y": 4
+        }, {
+            "amenity": "Ground floor access",
+            "count": 34,
+            "x": 61,
+            "y": 21
+        }, {
+            "amenity": "Outdoor parking",
+            "count": 38,
+            "x": 3,
+            "y": 149
+        }, {
+            "amenity": "Heated towel rack",
+            "count": 42,
+            "x": 133,
+            "y": 128
+        }, {
+            "amenity": "Sun loungers",
+            "count": 44,
+            "x": 36,
+            "y": 88
+        }, {
+            "amenity": "Beach view",
+            "count": 44,
+            "x": 15,
+            "y": 47
+        }, {
+            "amenity": "Shared gym",
+            "count": 48,
+            "x": 135,
+            "y": 86
+        }, {
+            "amenity": "Soaking tub",
+            "count": 52,
+            "x": 157,
+            "y": 136
+        }, {
+            "amenity": "Mini fridge",
+            "count": 52,
+            "x": 160,
+            "y": 113
+        }, {
+            "amenity": "Memory foam mattress",
+            "count": 56,
+            "x": 49,
+            "y": 98
+        }, {
+            "amenity": "Shared pool",
+            "count": 58,
+            "x": 69,
+            "y": 40
+        }, {
+            "amenity": "Shower chair",
+            "count": 64,
+            "x": 100,
+            "y": 91
+        }, {
+            "amenity": "Firm mattress",
+            "count": 64,
+            "x": 142,
+            "y": 131
+        }, {
+            "amenity": "Day bed",
+            "count": 66,
+            "x": 23,
+            "y": 51
+        }, {
+            "amenity": "Exercise equipment",
+            "count": 86,
+            "x": 173,
+            "y": 14
+        }, {
+            "amenity": "Ceiling fan",
+            "count": 90,
+            "x": 39,
+            "y": 182
+        }, {
+            "amenity": "Bathtub with bath chair",
+            "count": 90,
+            "x": 59,
+            "y": 24
+        }, {
+            "amenity": "Formal dining area",
+            "count": 94,
+            "x": 145,
+            "y": 49
+        }, {
+            "amenity": "Rain shower",
+            "count": 116,
+            "x": 81,
+            "y": 27
+        }, {
+            "amenity": "Table corner guards",
+            "count": 122,
+            "x": 144,
+            "y": 111
+        }, {
+            "amenity": "Fixed grab bars for toilet",
+            "count": 126,
+            "x": 91,
+            "y": 122
+        }, {
+            "amenity": "Kitchenette",
+            "count": 128,
+            "x": 169,
+            "y": 129
+        }, {
+            "amenity": "EV charger",
+            "count": 130,
+            "x": 182,
+            "y": 84
+        }, {
+            "amenity": "Gas oven",
+            "count": 130,
+            "x": 162,
+            "y": 57
+        }, {
+            "amenity": "",
+            "count": 134,
+            "x": 56,
+            "y": 107
+        }, {
+            "amenity": "Baby monitor",
+            "count": 142,
+            "x": 63,
+            "y": 143
+        }, {
+            "amenity": "Terrace",
+            "count": 144,
+            "x": 80,
+            "y": 8
+        }, {
+            "amenity": "Convection oven",
+            "count": 158,
+            "x": 114,
+            "y": 140
+        }, {
+            "amenity": "Sound system",
+            "count": 172,
+            "x": 1,
+            "y": 130
+        }, {
+            "amenity": "Outdoor seating",
+            "count": 178,
+            "x": 20,
+            "y": 28
+        }, {
+            "amenity": "DVD player",
+            "count": 180,
+            "x": 22,
+            "y": 160
+        }, {
+            "amenity": "Pillow-top mattress",
+            "count": 212,
+            "x": 89,
+            "y": 80
+        }, {
+            "amenity": "Fixed grab bars for shower",
+            "count": 222,
+            "x": 99,
+            "y": 121
+        }, {
+            "amenity": "En suite bathroom",
+            "count": 244,
+            "x": 43,
+            "y": 66
+        }, {
+            "amenity": "Netflix",
+            "count": 252,
+            "x": 171,
+            "y": 171
+        }, {
+            "amenity": "Breakfast table",
+            "count": 264,
+            "x": 35,
+            "y": 62
+        }, {
+            "amenity": "Balcony",
+            "count": 302,
+            "x": 163,
+            "y": 178
+        }, {
+            "amenity": "Smart TV",
+            "count": 306,
+            "x": 108,
+            "y": 16
+        }, {
+            "amenity": "Outlet covers",
+            "count": 314,
+            "x": 83,
+            "y": 1
+        }, {
+            "amenity": "Walk-in shower",
+            "count": 318,
+            "x": 153,
+            "y": 137
+        }, {
+            "amenity": "Stair gates",
+            "count": 326,
+            "x": 105,
+            "y": 100
+        }, {
+            "amenity": "Espresso machine",
+            "count": 330,
+            "x": 76,
+            "y": 165
+        }, {
+            "amenity": "Window guards",
+            "count": 336,
+            "x": 64,
+            "y": 118
+        }, {
+            "amenity": "Other pet(s)",
+            "count": 362,
+            "x": 174,
+            "y": 9
+        }, {
+            "amenity": "Fireplace guards",
+            "count": 382,
+            "x": 126,
+            "y": 92
+        }, {
+            "amenity": "Changing table",
+            "count": 398,
+            "x": 32,
+            "y": 20
+        }, {
+            "amenity": "Beach essentials",
+            "count": 412,
+            "x": 60,
+            "y": 117
+        }, {
+            "amenity": "Hot water kettle",
+            "count": 486,
+            "x": 120,
+            "y": 147
+        }, {
+            "amenity": "Lake access",
+            "count": 494,
+            "x": 141,
+            "y": 116
+        }, {
+            "amenity": "Beachfront",
+            "count": 598,
+            "x": 28,
+            "y": 139
+        }, {
+            "amenity": "Pocket wifi",
+            "count": 606,
+            "x": 164,
+            "y": 169
+        }, {
+            "amenity": "Game console",
+            "count": 630,
+            "x": 119,
+            "y": 187
+        }, {
+            "amenity": "Smart lock",
+            "count": 642,
+            "x": 51,
+            "y": 39
+        }, {
+            "amenity": "Babysitter recommendations",
+            "count": 682,
+            "x": 65,
+            "y": 69
+        }, {
+            "amenity": "Waterfront",
+            "count": 728,
+            "x": 131,
+            "y": 45
+        }, {
+            "amenity": "Doorman",
+            "count": 746,
+            "x": 156,
+            "y": 41
+        }, {
+            "amenity": "Roll-in shower",
+            "count": 764,
+            "x": 11,
+            "y": 115
+        }, {
+            "amenity": "Baby bath",
+            "count": 792,
+            "x": 151,
+            "y": 60
+        }, {
+            "amenity": "Disabled parking spot",
+            "count": 850,
+            "x": 106,
+            "y": 177
+        }, {
+            "amenity": "Body soap",
+            "count": 858,
+            "x": 84,
+            "y": 142
+        }, {
+            "amenity": "Bath towel",
+            "count": 858,
+            "x": 143,
+            "y": 76
+        }, {
+            "amenity": "Toilet paper",
+            "count": 858,
+            "x": 104,
+            "y": 18
+        }, {
+            "amenity": "Bedroom comforts",
+            "count": 888,
+            "x": 97,
+            "y": 70
+        }, {
+            "amenity": "Bathroom essentials",
+            "count": 888,
+            "x": 67,
+            "y": 170
+        }, {
+            "amenity": "Full kitchen",
+            "count": 976,
+            "x": 147,
+            "y": 112
+        }, {
+            "amenity": "Cat(s)",
+            "count": 984,
+            "x": 112,
+            "y": 83
+        }, {
+            "amenity": "Keypad",
+            "count": 1210,
+            "x": 38,
+            "y": 89
+        }, {
+            "amenity": "Dog(s)",
+            "count": 1288,
+            "x": 45,
+            "y": 138
+        }, {
+            "amenity": "Wide clearance to shower",
+            "count": 1402,
+            "x": 128,
+            "y": 5
+        }, {
+            "amenity": " toilet",
+            "count": 1402,
+            "x": 58,
+            "y": 74
+        }, {
+            "amenity": "Building staff",
+            "count": 1434,
+            "x": 121,
+            "y": 154
+        }, {
+            "amenity": "Suitable for events",
+            "count": 1580,
+            "x": 85,
+            "y": 0
+        }, {
+            "amenity": "Children\u2019s dinnerware",
+            "count": 1626,
+            "x": 70,
+            "y": 104
+        }, {
+            "amenity": "Cleaning before checkout",
+            "count": 1822,
+            "x": 107,
+            "y": 33
+        }, {
+            "amenity": "Handheld shower head",
+            "count": 1894,
+            "x": 2,
+            "y": 38
+        }, {
+            "amenity": "Accessible-height toilet",
+            "count": 2188,
+            "x": 54,
+            "y": 22
+        }, {
+            "amenity": "Accessible-height bed",
+            "count": 2246,
+            "x": 73,
+            "y": 173
+        }, {
+            "amenity": "Crib",
+            "count": 2448,
+            "x": 110,
+            "y": 64
+        }, {
+            "amenity": "Paid parking on premises",
+            "count": 2718,
+            "x": 13,
+            "y": 34
+        }, {
+            "amenity": "Wide entryway",
+            "count": 2726,
+            "x": 176,
+            "y": 146
+        }, {
+            "amenity": "translation missing: en.hosting_amenity_49",
+            "count": 2755,
+            "x": 180,
+            "y": 181
+        }, {
+            "amenity": "Pets live on this property",
+            "count": 2758,
+            "x": 33,
+            "y": 75
+        }, {
+            "amenity": "Ethernet connection",
+            "count": 2774,
+            "x": 44,
+            "y": 120
+        }, {
+            "amenity": "Wide clearance to bed",
+            "count": 2832,
+            "x": 139,
+            "y": 82
+        }, {
+            "amenity": "Room-darkening shades",
+            "count": 3082,
+            "x": 66,
+            "y": 81
+        }, {
+            "amenity": "Pack \u2019n Play/travel crib",
+            "count": 3082,
+            "x": 90,
+            "y": 166
+        }, {
+            "amenity": "translation missing: en.hosting_amenity_50",
+            "count": 3193,
+            "x": 179,
+            "y": 125
+        }, {
+            "amenity": "Children\u2019s books and toys",
+            "count": 3228,
+            "x": 7,
+            "y": 50
+        }, {
+            "amenity": "Wheelchair accessible",
+            "count": 3504,
+            "x": 170,
+            "y": 150
+        }, {
+            "amenity": "Bathtub",
+            "count": 3516,
+            "x": 34,
+            "y": 105
+        }, {
+            "amenity": "Flat path to front door",
+            "count": 3868,
+            "x": 183,
+            "y": 68
+        }, {
+            "amenity": "Wide hallway clearance",
+            "count": 3944,
+            "x": 79,
+            "y": 152
+        }, {
+            "amenity": "Other",
+            "count": 4038,
+            "x": 134,
+            "y": 35
+        }, {
+            "amenity": "High chair",
+            "count": 4142,
+            "x": 18,
+            "y": 133
+        }, {
+            "amenity": "Pets allowed",
+            "count": 4180,
+            "x": 41,
+            "y": 58
+        }, {
+            "amenity": "Indoor fireplace",
+            "count": 4306,
+            "x": 116,
+            "y": 97
+        }, {
+            "amenity": "BBQ grill",
+            "count": 4640,
+            "x": 148,
+            "y": 157
+        }, {
+            "amenity": "Paid parking off premises",
+            "count": 5030,
+            "x": 140,
+            "y": 25
+        }, {
+            "amenity": "24-hour check-in",
+            "count": 5262,
+            "x": 12,
+            "y": 77
+        }, {
+            "amenity": "Smoking allowed",
+            "count": 5282,
+            "x": 37,
+            "y": 44
+        }, {
+            "amenity": "Safety card",
+            "count": 5398,
+            "x": 48,
+            "y": 46
+        }, {
+            "amenity": "Hot tub",
+            "count": 5400,
+            "x": 74,
+            "y": 103
+        }, {
+            "amenity": "Well-lit path to entrance",
+            "count": 5422,
+            "x": 29,
+            "y": 96
+        }, {
+            "amenity": "Single level home",
+            "count": 5604,
+            "x": 136,
+            "y": 186
+        }, {
+            "amenity": "Cable TV",
+            "count": 6138,
+            "x": 172,
+            "y": 159
+        }, {
+            "amenity": "Garden or backyard",
+            "count": 6344,
+            "x": 118,
+            "y": 156
+        }, {
+            "amenity": "Private living room",
+            "count": 6370,
+            "x": 122,
+            "y": 6
+        }, {
+            "amenity": "Buzzer/wireless intercom",
+            "count": 6874,
+            "x": 42,
+            "y": 101
+        }, {
+            "amenity": "Coffee maker",
+            "count": 7432,
+            "x": 71,
+            "y": 95
+        }, {
+            "amenity": "Lock on bedroom door",
+            "count": 7438,
+            "x": 46,
+            "y": 141
+        }, {
+            "amenity": "Wide doorway",
+            "count": 7858,
+            "x": 185,
+            "y": 61
+        }, {
+            "amenity": "Breakfast",
+            "count": 8346,
+            "x": 0,
+            "y": 11
+        }, {
+            "amenity": "Luggage dropoff allowed",
+            "count": 8736,
+            "x": 52,
+            "y": 7
+        }, {
+            "amenity": "Host greets you",
+            "count": 9474,
+            "x": 181,
+            "y": 153
+        }, {
+            "amenity": "Lockbox",
+            "count": 9550,
+            "x": 159,
+            "y": 106
+        }, {
+            "amenity": "Private entrance",
+            "count": 10408,
+            "x": 127,
+            "y": 90
+        }, {
+            "amenity": "Free street parking",
+            "count": 10580,
+            "x": 9,
+            "y": 59
+        }, {
+            "amenity": "Pool",
+            "count": 10898,
+            "x": 31,
+            "y": 94
+        }, {
+            "amenity": "Patio or balcony",
+            "count": 10988,
+            "x": 21,
+            "y": 17
+        }, {
+            "amenity": "Gym",
+            "count": 11104,
+            "x": 40,
+            "y": 52
+        }, {
+            "amenity": "Extra pillows and blankets",
+            "count": 11230,
+            "x": 166,
+            "y": 110
+        }, {
+            "amenity": "Carbon monoxide detector",
+            "count": 12282,
+            "x": 5,
+            "y": 134
+        }, {
+            "amenity": "Internet",
+            "count": 12546,
+            "x": 146,
+            "y": 85
+        }, {
+            "amenity": "Self check-in",
+            "count": 12840,
+            "x": 113,
+            "y": 72
+        }, {
+            "amenity": "Dishwasher",
+            "count": 13650,
+            "x": 17,
+            "y": 108
+        }, {
+            "amenity": "First aid kit",
+            "count": 14198,
+            "x": 150,
+            "y": 67
+        }, {
+            "amenity": "Fire extinguisher",
+            "count": 15020,
+            "x": 35,
+            "y": 164
+        }, {
+            "amenity": "Cooking basics",
+            "count": 15704,
+            "x": 95,
+            "y": 186
+        }, {
+            "amenity": "Long term stays allowed",
+            "count": 15814,
+            "x": 102,
+            "y": 29
+        }, {
+            "amenity": "Bed linens",
+            "count": 16112,
+            "x": 47,
+            "y": 183
+        }, {
+            "amenity": "Oven",
+            "count": 16366,
+            "x": 121,
+            "y": 56
+        }, {
+            "amenity": "Stove",
+            "count": 16552,
+            "x": 117,
+            "y": 19
+        }, {
+            "amenity": "Microwave",
+            "count": 16902,
+            "x": 140,
+            "y": 55
+        }, {
+            "amenity": "Dishes and silverware",
+            "count": 16916,
+            "x": 187,
+            "y": 175
+        }, {
+            "amenity": "Refrigerator",
+            "count": 18250,
+            "x": 75,
+            "y": 69
+        }, {
+            "amenity": "Elevator",
+            "count": 18416,
+            "x": 155,
+            "y": 30
+        }, {
+            "amenity": "Family/kid friendly",
+            "count": 18906,
+            "x": 111,
+            "y": 42
+        }, {
+            "amenity": "Step-free access",
+            "count": 20926,
+            "x": 190,
+            "y": 49
+        }, {
+            "amenity": "Free parking on premises",
+            "count": 23320,
+            "x": 167,
+            "y": 16
+        }, {
+            "amenity": "Dryer",
+            "count": 24300,
+            "x": 68,
+            "y": 174
+        }, {
+            "amenity": "Hot water",
+            "count": 26718,
+            "x": 53,
+            "y": 23
+        }, {
+            "amenity": "Laptop friendly workspace",
+            "count": 32460,
+            "x": 178,
+            "y": 134
+        }, {
+            "amenity": "Hair dryer",
+            "count": 34418,
+            "x": 168,
+            "y": 190
+        }, {
+            "amenity": "Iron",
+            "count": 34606,
+            "x": 69,
+            "y": 48
+        }, {
+            "amenity": "Air conditioning",
+            "count": 34814,
+            "x": 88,
+            "y": 124
+        }, {
+            "amenity": "Shampoo",
+            "count": 35074,
+            "x": 4,
+            "y": 151
+        }, {
+            "amenity": "TV",
+            "count": 38554,
+            "x": 123,
+            "y": 185
+        }, {
+            "amenity": "Hangers",
+            "count": 38830,
+            "x": 187,
+            "y": 87
+        }, {
+            "amenity": "Heating",
+            "count": 39950,
+            "x": 82,
+            "y": 93
+        }, {
+            "amenity": "Washer",
+            "count": 40904,
+            "x": 109,
+            "y": 148
+        }, {
+            "amenity": "Smoke detector",
+            "count": 41606,
+            "x": 115,
+            "y": 0
+        }, {
+            "amenity": "Wifi",
+            "count": 42054,
+            "x": 19,
+            "y": 71
+        }, {
+            "amenity": "Essentials",
+            "count": 43226,
+            "x": 6,
+            "y": 43
+        }, {
+            "amenity": "Kitchen",
+            "count": 43350,
+            "x": 152,
+            "y": 163
+        }]
+    }
+}

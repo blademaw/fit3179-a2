@@ -1,11 +1,21 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Median Airbnb nightly costs across Melbourne LGAs",
+    "title": {
+        "text": "Airbnbs across Victoria LGAs and their median nightly costs",
+        "fontSize": 15,
+        "fontWeight": 600,
+        "dx": 23
+    },
     "background": "#ebd4be",
     "config": {
         "axis": {
             "gridColor": "#dbb38b"
-        }
+        },
+        "style": {
+            "cell": {
+              "stroke": "transparent"
+            }
+          }
     },
     "vconcat": [{
             "autosize": {
@@ -79,7 +89,7 @@
                                 "domain": [0.2, 1, 2]
                             },
                             "legend": {
-                                "offset": -175,
+                                "offset": -200,
                                 "orient": "left"
                             }
                         },
@@ -149,8 +159,9 @@
                         "size": {
                             "field": "med_price",
                             "type": "quantitative",
+                            "title": "Nightly cost",
                             "legend": {
-                                "offset": -175,
+                                "offset": -200,
                                 "orient": "left",
                                 "format": "$f"
                             }
@@ -173,15 +184,14 @@
                     "type": "text",
                     "dx": -50,
                     "font": "Roboto",
-                    "fontSize": 13,
-                    "fontWeight": 400
+                    "fontSize": 14
                 },
                 "encoding": {
                     "color": {
                         "value": "black"
                     },
                     "text": {
-                        "value": {"signal": "'Try selecting LGAs from the above map to see how they compare below:'"}
+                        "value": {"signal": "'Try selecting LGAs from the above map (with shift + click) to see how they compare below:'"}
                     }
                 }
             }]
@@ -215,9 +225,7 @@
                                 {
                                     "mark": {
                                         "type": "point",
-                                        "color": {
-                                            "value": "gray"
-                                        },
+                                        "color": "gray",
                                         "opacity": 1,
                                         "size": 100
                                     },
@@ -289,9 +297,6 @@
                         {
                             "width": 400,
                             "height": 325,
-                            "config": {
-                                "background": "white"
-                            },
                             "data": {
                                 "url": "../data/listings_agg.csv",
                                 "format": {
@@ -308,12 +313,12 @@
                                     "field": "city",
                                     "type": "nominal",
                                     "title": "LGA",
-                                    "sort": {"field": "med_price", "type": "quantitative"}
+                                    "sort": {"field": "med_weekly_price", "type": "quantitative"}
                                 },
                                 "x": {
-                                    "field": "med_price",
+                                    "field": "med_weekly_price",
                                     "type": "quantitative",
-                                    "title": "Median weekly price",
+                                    "title": "Median weekly cost",
                                     "axis": {"format": "$f"}
                                 },
                                 "fillOpacity": {
@@ -329,7 +334,7 @@
                                     "title": "LGA"
                                 },
                                 {
-                                    "field": "med_price",
+                                    "field": "med_weekly_price",
                                     "title": "Median weekly price",
                                     "type": "quantitative",
                                     "format": "$.0f"
@@ -366,16 +371,20 @@
                         "filter": {
                             "selection": "s-box"
                         }
+                    },
+                    {
+                        "filter": "datum.price < 900 && datum.price > 1"
                     }],
                     "mark": {
                         "type": "boxplot",
-                        "extent": "min-max"
+                        "extent": "min-max",
+                        "color": "brown"
                     },
                     "encoding": {
                         "x": {
-                            "field": "weekly_price",
+                            "field": "price",
                             "type": "quantitative",
-                            "title": "Weekly rent price ($)",
+                            "title": "Nightly rent price ($)",
                             "axis": {
                                 "grid": false
                             }

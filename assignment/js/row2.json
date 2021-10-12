@@ -92,7 +92,7 @@
         },
         {
             "data": {
-                "url": "../data/revised_cleansed_listings.csv",
+                "url": "../data/listings_full.csv",
                 "format": {
                     "type": "csv"
                 }
@@ -104,7 +104,7 @@
             ],
             "mark": {
                 "type": "circle",
-                "opacity": 0.8
+                "opacity": 0.6
             },
             "encoding": {
                 "longitude": {"field": "longitude"},
@@ -112,7 +112,7 @@
                 "color": {
                     "field": "review_scores_rating",
                     "type": "quantitative",
-                    "title": "Review Score (out of 100)",
+                    "title": "Review Score (/100)",
                     "scale": {
                         "scheme": "browns",
                         "type": "threshold",
@@ -228,7 +228,7 @@
                             "value": "black"
                         },
                         "text": {
-                            "value": {"signal": "'people maximum'"}
+                            "value": {"signal": "'people'"}
                         }
                     }
                 }]

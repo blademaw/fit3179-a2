@@ -1,6 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#E0C8B0",
+    "title": {"text": "What the property types of Airbnbs are", "dx": -88},
     "config": {
         "style": {
         "cell": {
@@ -24,7 +25,11 @@
         }
     },
     "encoding": {
-        "color": {"field": "property", "type": "nominal", "legend": {"title": "Property type", "orient": "left", "offset": -20}},
+        "color": {"field": "property", "type": "nominal", "legend": {"title": "Property type", "orient": "left", "offset": -20},
+    "scale": {
+        "domain": ["Apartment", "House", "Townhouse", "Other", "Guesthouse", "Serviced apartment", "Villa"],
+        "range": ["#386cb0", "#fdc086", "#beaed4", "#7fc97f", "#ffff99", "#f0027f", "#bf5b17"]
+    }},
         "theta": {"field": "count", "type": "quantitative"},
         "order": {"field": "perc", "type": "quantitative", "sort": "descending"},
         "strokeOpacity": {"value": 0.5},
@@ -51,6 +56,6 @@
         }]
     },
     "layer": [
-        {"mark": {"type": "arc", "stroke": "white", "innerRadius": 50}}
+        {"mark": {"type": "arc", "stroke": "brown", "innerRadius": 50}}
     ]
 }

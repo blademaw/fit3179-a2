@@ -167,6 +167,25 @@
                             }
                         }
                     }
+                },
+                {
+                    "data": {
+                        "url": "../data/listings_agg.csv",
+                        "format": {
+                            "type": "csv"
+                        }
+                    },
+                    "mark": {
+                        "type": "text",
+                        "baseline": "middle",
+                        "dx": 309,
+                        "dy": 10
+                    },
+                    "encoding": {
+                        "text": {
+                            "value": ["The Shire of Yarra Ranges is known for", "its nature, wildlife, and wine,", "making it a popular tourist destination"]
+                        }
+                    }
                 }
             ]
         },
@@ -183,15 +202,14 @@
                 "mark": {
                     "type": "text",
                     "dx": -50,
-                    "font": "Roboto",
-                    "fontSize": 14
+                    "fontSize": 13
                 },
                 "encoding": {
                     "color": {
                         "value": "black"
                     },
                     "text": {
-                        "value": {"signal": "'Try selecting LGAs from the above map (with shift + click) to see how they compare below:'"}
+                        "value": "Try selecting LGAs from the above map (with shift + click) to see how they compare below:"
                     }
                 }
             }]
@@ -291,6 +309,25 @@
                                             "type": "quantitative"
                                         }]
                                     }
+                                },
+                                {
+                                    "data": {
+                                        "url": "../data/listings_agg.csv",
+                                        "format": {
+                                            "type": "csv"
+                                        }
+                                    },
+                                    "mark": {
+                                        "type": "text",
+                                        "baseline": "middle",
+                                        "dx": 80,
+                                        "dy": -30
+                                    },
+                                    "encoding": {
+                                        "text": {
+                                            "value": ["In the City of Melbourne alone, Airbnb", "growth has increased 186% since 2016"]
+                                        }
+                                    }
                                 }
                             ]
                         },
@@ -312,8 +349,10 @@
                                 "y": {
                                     "field": "city",
                                     "type": "nominal",
-                                    "title": "LGA",
-                                    "sort": {"field": "med_weekly_price", "type": "quantitative"}
+                                    "sort": {"field": "med_weekly_price", "type": "quantitative"},
+                                    "axis": {
+                                        "title": "LGA"
+                                    }
                                 },
                                 "x": {
                                     "field": "med_weekly_price",

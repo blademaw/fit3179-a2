@@ -4,7 +4,8 @@
     "title": {
         "text": ["How Victorians choose to", "rent out their properties"],
         "align": "left",
-        "dx": -175
+        "dx": -175,
+        "dy": 10
     },
     "config": {
         "style": {
@@ -114,6 +115,31 @@
         },
         "encoding": {
             "text": {"value": "Shared room"}
+        }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "color": "white",
+            "baseline": "middle",
+            "dx": -70
+        },
+        "encoding": {
+            "text": {"value": "63%"}
+        }
+    },
+    {
+        "mark": {
+            "type": "text",
+            "fontSize": 13,
+            "fontStyle": "bold",
+            "color": "white",
+            "baseline": "middle",
+            "dx": 90
+        },
+        "encoding": {
+            "text": {"value": "35%"}
         }
     }]
     

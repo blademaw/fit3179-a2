@@ -1,6 +1,11 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "background": "#E0C8B0",
+    "title": {
+        "text": ["How Victorians choose to", "rent out their properties"],
+        "align": "left",
+        "dx": -175
+    },
     "config": {
         "style": {
         "cell": {

@@ -45,9 +45,9 @@
 <body>
     <div id="mainpage">
         <!-- heading grid -->
-        <div class="pure-g">
-            <div class="pure-u-1-1 l-box head-grid">
-                <h1>ROOMS FOR RENT</h1>
+        <div class="pure-g head-grid" style="margin-top: -30px; margin-bottom: -10px;">
+            <div class="pure-u-1-1">
+                <img src="media/logo.png" alt="Rooms Available" width="350" height="300">
             </div>
         </div>
         
@@ -55,13 +55,13 @@
         <div class="pure-g padded">
             <div class="pure-u-1-1 highlighted centtext">
                 <p> Every year, Melbournians rent their living spaces to guests through Airbnb, <br/>
-                    and <strong>can earn an <a href="https://www.theage.com.au/national/victoria/airbnb-a-numbers-guide-for-melbournians-raking-in-the-dollars-20160114-gm5w9b.html">average of $11,600</a> annually</strong> for a single room. The following<br/>
-                    visualisation looks at data <strong>compiled in 2018</strong> and analyzes open Airbnbs<br/>
-                    across local government areas (LGAs) of Victoria.</p>
+                    and <strong>can earn an <a href="https://www.theage.com.au/national/victoria/airbnb-a-numbers-guide-for-melbournians-raking-in-the-dollars-20160114-gm5w9b.html">average of $11,600 AUD</a> annually</strong> for a single room. The following<br/>
+                    visualisation looks at data <strong>compiled in 2018</strong> and analyzes Airbnbs<br/>
+                    across the local government areas (LGAs) of Victoria.</p>
             </div>
 
             <div class="pure-u-1-1 darker centtext" style="margin-top: 20px; margin-bottom: -20px;">
-                <h2>Where are the Airbnbs, and how much are they?</h2>
+                <h2>Where are most Airbnbs, and how much are they?</h2>
             </div>
         </div>
         
@@ -73,23 +73,22 @@
         </div>
 
         <!-- viz row 2 grid (interactive suburb dot plot with figures) -->
-        <!-- <div class="highlighted"> -->
             <div class="pure-g highlighted padded">
                 <div class="pure-u-1-1 centtext darker" style="margin-bottom: 10px;">
-                    <h2>What makes up an average Airbnb in Victoria?</h2>
+                    <h2>What makes up the average Airbnb in Victoria?</h2>
                 </div>
 
                 <div class="pure-u-1-3">
                     <div class="pure-u-1-1 centtext darker">
-                        <h3>Floor plan</h3>
+                        <h3>Layouts & floor plans</h3>
                     </div>
 
-                    <div class="pure-u-1-1">
-                        <p>Blurb about Airbnbs having bath/bedrooms and accommodating people.</p>
+                    <div class="pure-u-1-1 spaced">
+                        <p>Airbnbs rented out to customers must have <em>at least</em> one full bedroom — in Victoria, Airbnbs have <strong>1.5 bedrooms on average</strong>. Most Airbnbs also house at least one bathroom, but just <strong>27% of listings</strong> have <strong>more than one</strong>. Airbnbs can also offer <strong>additional amenities</strong> to renters and advertise them on their listing. The graphic below displays the <strong>most common</strong> amenities for Victorian Airbnbs.</p>
                     </div>
                 </div>
 
-                <div class="pure-u-2-3 l-box">
+                <div class="pure-u-2-3 l-box" style="margin-top: 35px;">
                     <div id="vis2" class="vis-container"></div>
                 </div>
             </div>
@@ -117,12 +116,27 @@
                         <h3>Rental types & amenities</h3>
                     </div>
 
-                    <div class="pure-u-1-1">
-                        <p>With over half of Airbnb rentals being apartments, .</p>
+                    <div class="pure-u-1-1 spaced">
+                        <p>With <strong>over half</strong> of Airbnb rentals being apartments, the majority of hosts preferred to rent their <strong>entire living area</strong> to the customer. Victorians listing their house were also <strong>more likely</strong> to only let a single room, with <strong>56% of house listings</strong> being for private rooms, in comparison to only <strong>24% for apartment listings</strong>.<br/><br/><br/>The most common amenity for both apartments and houses was a <strong>kitchen</strong> — but amenities were often catered to the property type: apartments offered more <strong>gyms and pools</strong>, while houses ranked higher in <strong>step-free access and private entrances</strong>. And while apartments were the most popular listing, outside of city LGAs, <strong>houses are by far more common</strong>. Explore the map below to see Airbnb property types in suburb LGAs.</p>
                     </div>
                 </div>
             </div>
-        <!-- </div> -->
+
+            <!-- viz row 5 grid (common types) -->
+            <div class="pure-g highlighted padded" style="margin-top: -25px;">
+                <div class="pure-u-1-1 l-box" style="margin-top: -100px;">
+                    <div id="vis6" class="vis-container"></div>
+                </div>
+            </div>
+
+            <!-- attribution and closing grid -->
+            <div class="pure-g">
+                <div class="pure-u-1-1 padded closing-text" style="margin-top: -50px;">
+                    <p style="text-align: left;">Created by Jack Oliver for FIT3179 Data Visualisation II</p>
+                    <h3>Attributions</h3>
+                    <p>Dataset: <a href="https://www.kaggle.com/tylerx/melbourne-airbnb-open-data">https://www.kaggle.com/tylerx/melbourne-airbnb-open-data</a></p>
+                </div>
+            </div>
     </div>
     
 
@@ -133,6 +147,7 @@
         var row3Viz = "js/word_cloud3.json";
         var row4Viz = "js/row4.json"
         var row5Viz = "js/row4bar.json"
+        var row6Viz = "js/row5.json"
 
         vegaEmbed('#vis1', CloroViz, {
             "actions": false
@@ -151,6 +166,10 @@
         }).then(function (result) {}).catch(console.error);
         
         vegaEmbed('#vis5', row5Viz, {
+            "actions": false
+        }).then(function (result) {}).catch(console.error);
+
+        vegaEmbed('#vis6', row6Viz, {
             "actions": false
         }).then(function (result) {}).catch(console.error);
     </script>

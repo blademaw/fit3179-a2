@@ -8,6 +8,12 @@ textarea,
     font-family: Georgia, Times, "Times New Roman", serif;
 }
 
+.closing-text{
+    text-align: right;
+    color: grey;
+    font-size: 8px;
+}
+
 .head-grid {
     text-align: center;
     align-items: center;
@@ -47,6 +53,9 @@ textarea,
     padding: 1em;
 }
 
+.spaced {
+    line-height: 1.5;
+}
 
 h1 {
     font-weight: 900;

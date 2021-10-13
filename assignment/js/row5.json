@@ -1,0 +1,122 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 300,
+    "background": "#E0C8B0",
+    "config": {
+        "axis": {
+            "gridColor": "#dbb38b"
+        },
+        "style": {
+            "cell": {
+                "stroke": "transparent"
+            }
+        }
+    },
+    "title": {
+        "text": ["Distribution of apartments vs houses"],
+        "align": "left",
+        "dx": -460
+    },
+    "projection": {
+        "type": "equirectangular"
+    },
+    "params": [{
+            "name": "prophighlight",
+            "select": {
+                "type": "point",
+                "on": "mouseover"
+            }
+        },
+        {
+            "name": "select-prop",
+            "select": {
+                "type": "point",
+                "fields": ["properties.ABB_NAME"]
+            }
+        }
+    ],
+    "data": {
+        "url": "../data/vic_lga.json",
+        "format": {
+            "type": "topojson",
+            "feature": "vic_lga"
+        }
+    },
+    "transform": [{
+        "lookup": "properties.ABB_NAME",
+        "from": {
+            "data": {
+                "url": "../data/listings_agg.csv",
+                "format": {
+                    "type": "csv"
+                }
+            },
+            "key": "city",
+            "fields": ["city", "perc_apt", "mode_prop"]
+        }
+        },
+        {
+            "filter": "datum.mode_prop == 'Apartment' || datum.mode_prop == 'House'"
+        }],
+    "mark": {
+        "type": "geoshape",
+        "stroke": "white"
+    },
+    "encoding": {
+        "fillOpacity": {
+            "condition": [{
+                "param": "select-prop",
+                "value": 1
+            }],
+            "value": 0.4
+        },
+        "color": {
+            "field": "perc_apt",
+            "type": "quantitative",
+            "title": "Percentage of apartments",
+            "scale": {
+                "scheme": "blueorange",
+                "domainMid": 0.5,
+                "domain": [0, 1],
+                "reverse": true
+            },
+            "legend": {
+                "offset": 0,
+                "orient": "left",
+                "format": ".0%"
+            }
+        },
+        "tooltip": [{
+                "field": "properties.ABB_NAME",
+                "type": "nominal",
+                "title": "LGA"
+            },
+            {
+                "field": "mode_prop",
+                "type": "nominal",
+                "title": "Most common property type"
+            },
+            {
+                "field": "perc_apt",
+                "type": "quantitative",
+                "title": "Percentage of apartments",
+                "format": ".0%"
+            }
+        ],
+        "strokeWidth": {
+                "condition": [{
+                    "param": "select-prop",
+                    "empty": false,
+                    "value": 2
+                },
+                {
+                    "param": "prophighlight",
+                    "empty": false,
+                    "value": 1.2
+                }
+            ],
+            "value": 0.4
+        }
+    }
+}

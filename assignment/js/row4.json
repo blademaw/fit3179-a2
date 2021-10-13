@@ -24,7 +24,7 @@
         }
     },
     "encoding": {
-        "color": {"field": "property", "type": "nominal", "legend": {"orient": "left", "offset": -20}},
+        "color": {"field": "property", "type": "nominal", "legend": {"title": "Property type", "orient": "left", "offset": -20}},
         "theta": {"field": "count", "type": "quantitative"},
         "order": {"field": "perc", "type": "quantitative", "sort": "descending"},
         "strokeOpacity": {"value": 0.5},

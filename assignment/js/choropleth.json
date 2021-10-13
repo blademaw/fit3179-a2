@@ -82,14 +82,14 @@
                         "color": {
                             "field": "norm_listings_pop",
                             "type": "quantitative",
-                            "title": "Number of listings per 100 people",
+                            "title": "Listings per 1000 people",
                             "scale": {
                                 "scheme": "browns",
                                 "type": "threshold",
-                                "domain": [0.2, 1, 2]
+                                "domain": [2, 10, 20]
                             },
                             "legend": {
-                                "offset": -200,
+                                "offset": -152,
                                 "orient": "left"
                             }
                         },
@@ -108,7 +108,7 @@
                             {
                                 "field": "norm_listings_pop",
                                 "type": "quantitative",
-                                "title": "Number of listings per 100 people",
+                                "title": "Listings per 1000 people",
                                 "format": ".01"
                             },
                             {
@@ -259,15 +259,6 @@
                                     }
                                 },
                                 {
-                                    "params": [
-                                    {
-                                        "name": "select",
-                                        "select": {
-                                            "type": "point",
-                                            "fields": ["properties.ABB_NAME"]
-                                        }
-                                    }
-                                ],
                                     "transform": [{
                                         "filter": {
                                             "selection": "select"

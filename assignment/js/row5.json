@@ -64,13 +64,6 @@
         "stroke": "white"
     },
     "encoding": {
-        "fillOpacity": {
-            "condition": [{
-                "param": "select-prop",
-                "value": 1
-            }],
-            "value": 0.4
-        },
         "color": {
             "field": "perc_apt",
             "type": "quantitative",
@@ -103,11 +96,7 @@
             }
         ],
         "strokeWidth": {
-                "condition": [{
-                    "param": "select-prop",
-                    "empty": false,
-                    "value": 2
-                },
+                "condition": [
                 {
                     "param": "prophighlight",
                     "empty": false,

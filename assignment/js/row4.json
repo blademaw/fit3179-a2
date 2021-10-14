@@ -28,7 +28,7 @@
         "color": {"field": "property", "type": "nominal", "legend": {"title": "Property type", "orient": "left", "offset": -20},
     "scale": {
         "domain": ["Apartment", "House", "Townhouse", "Other", "Guesthouse", "Serviced apartment", "Villa"],
-        "range": ["#386cb0", "#fdc086", "#beaed4", "#7fc97f", "#ffff99", "#f0027f", "#bf5b17"]
+        "range": [ "brown", "steelblue", "#beaed4", "#7fc97f", "#ffff99", "#f0027f", "#bf5b17"]
     }},
         "theta": {"field": "count", "type": "quantitative"},
         "order": {"field": "perc", "type": "quantitative", "sort": "descending"},

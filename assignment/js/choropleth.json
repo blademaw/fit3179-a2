@@ -109,7 +109,7 @@
                                 "field": "norm_listings_pop",
                                 "type": "quantitative",
                                 "title": "Listings per 1000 people",
-                                "format": ".01"
+                                "format": ".1f"
                             },
                             {
                                 "field": "med_price",
@@ -236,7 +236,7 @@
                                         }
                                     },
                                     "key": "city",
-                                    "fields": ["num_listings", "population", "med_price"]
+                                    "fields": ["num_listings", "population", "med_price", "pop_dens"]
                                 }
                             }],
                             "layer": [
@@ -249,13 +249,29 @@
                                     },
                                     "encoding": {
                                         "x": {
-                                            "field": "num_listings",
+                                            "field": "pop_dens",
                                             "type": "quantitative"
                                         },
                                         "y": {
-                                            "field": "population",
+                                            "field": "num_listings",
                                             "type": "quantitative"
-                                        }
+                                        },
+                                        "tooltip": [{
+                                            "field": "properties.ABB_NAME",
+                                            "title": "LGA",
+                                            "type": "nominal"
+                                        },
+                                        {
+                                            "field": "num_listings",
+                                            "title": "Number of total listings",
+                                            "type": "quantitative"
+                                        },
+                                        {
+                                            "field": "pop_dens",
+                                            "title": "Population density (ppl/km^2)",
+                                            "type": "quantitative",
+                                            "format": ".0f"
+                                        }]
                                     }
                                 },
                                 {
@@ -272,17 +288,17 @@
                                     },
                                     "encoding": {
                                         "x": {
-                                            "field": "num_listings",
+                                            "field": "pop_dens",
                                             "type": "quantitative",
                                             "scale": {
                                                 "type": "linear"
                                             },
-                                            "title": "Total number of Listings"
+                                            "title": "Population density (people per sq km)"
                                         },
                                         "y": {
-                                            "field": "population",
+                                            "field": "num_listings",
                                             "type": "quantitative",
-                                            "title": "Population (2018)"
+                                            "title": "Number of listings"
                                         },
                                         "tooltip": [{
                                             "field": "properties.ABB_NAME",
@@ -295,9 +311,10 @@
                                             "type": "quantitative"
                                         },
                                         {
-                                            "field": "population",
-                                            "title": "Population (2018)",
-                                            "type": "quantitative"
+                                            "field": "pop_dens",
+                                            "title": "Population density (ppl/km^2)",
+                                            "type": "quantitative",
+                                            "format": ".0f"
                                         }]
                                     }
                                 },
@@ -311,8 +328,8 @@
                                     "mark": {
                                         "type": "text",
                                         "baseline": "middle",
-                                        "dx": 80,
-                                        "dy": -30
+                                        "dx": 20,
+                                        "dy": -90
                                     },
                                     "encoding": {
                                         "text": {
